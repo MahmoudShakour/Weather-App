@@ -1,8 +1,24 @@
-console.log('hi');
+import { View } from "./view/View";
+import { getLocationWeather } from "./API/forecastWeather";
+import { dayWeather } from "./model/dayWeather";
+import { weekWeather } from "./model/weekWeather";
+// import {weekWeather} from "./model/weekWeather";
 
-const root=document.querySelector('.root');
 
-const div=document.createElement('div');
-div.textContent="hi";
+async function main(){
 
-root.append(div);
+    let response=await getLocationWeather("dekernes");
+    console.log(response);
+    let todayWeather=dayWeather.createdayWeather(response);
+    let thisWeekWeather=weekWeather.createWeekWeather(response);
+
+    View.init();
+    View.loadHomePage(todayWeather,thisWeekWeather);
+
+}
+
+
+
+
+
+main();
