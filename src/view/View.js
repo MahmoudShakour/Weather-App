@@ -23,9 +23,20 @@ export class View{
         
     }
     
+
+
     static loadHomePage(todayWeather,weekWeather){
+        View.clearPage();
+        View.init();
         View.loadTodayWeather(todayWeather);
         View.loadWeekWeather(weekWeather);
+    }
+
+    static clearPage(){
+        const root=View._getElement(".root");
+        while(root.childNodes[0]!==undefined){
+            root.removeChild(root.childNodes[0]);
+        }
     }
     
     static loadTodayWeather(todayWeather){
@@ -46,6 +57,7 @@ export class View{
         search.placeholder="Search location...";
 
         const button=View._createElement("button","search-button");
+        console.log(button);
         button.textContent="search";
         
         
@@ -57,22 +69,17 @@ export class View{
         this.todayWeatherLeftContainer.append(button);
 
         const feelsLike=View._createElement("div","today-feels-like");
-        feelsLike.textContent=todayWeather.feelsLike;
+        feelsLike.textContent="feels like "+todayWeather.feelsLike+" °C";
 
-        const humadity=View._createElement("div","today-humadity");
-        humadity.textContent=todayWeather.humadity;
-
-        const chanceOfRain=View._createElement("div","today-chance-of-rain");
-        chanceOfRain.textContent=todayWeather.chanceOfRain;
+        const humidity=View._createElement("div","today-humidity");
+        humidity.textContent="humidity "+todayWeather.humidity+"%";
 
         const windSpeed=View._createElement("div","today-wind-speed");
-        windSpeed.textContent=todayWeather.windSpeed;
+        windSpeed.textContent="wind speed "+todayWeather.windSpeed+"km/h";
 
         this.todayWeatherRightContainer.append(feelsLike);
-        this.todayWeatherRightContainer.append(humadity);
-        this.todayWeatherRightContainer.append(chanceOfRain);
+        this.todayWeatherRightContainer.append(humidity);
         this.todayWeatherRightContainer.append(windSpeed);
-    
     }
 
     static loadWeekWeather(weekWeather){
@@ -83,17 +90,16 @@ export class View{
             const name=View._createElement("div","week-weather-element-name");
             name.textContent=weekWeather.day[i].name;
 
-            const minTemp=View._createElement("div","week-weather-element-minTemp");
-            minTemp.textContent=weekWeather.day[i].minTemperature;
-
             const maxTemp=View._createElement("div","week-weather-element-maxTemp");
-            maxTemp.textContent=weekWeather.day[i].maxTemperature;
+            maxTemp.textContent=weekWeather.day[i].maxTemperature+" °C";
+            
+            const minTemp=View._createElement("div","week-weather-element-minTemp");
+            minTemp.textContent=weekWeather.day[i].minTemperature+" °C";
 
-            container.append(name,minTemp,maxTemp);
+            container.append(name,maxTemp,minTemp);
 
             this.weekWeatherContainer.appendChild(container);
         }
-
     }
 
     static _getElement(elementSelector){
@@ -106,5 +112,17 @@ export class View{
         element.className=className;
 
         return element;
+    }
+
+    static bindSearchButton(handler){
+
+        const btn=View._getElement(".search-button");
+        console.log(btn);
+        btn.addEventListener("click",()=>{
+            
+            const input=View._getElement(".search-input");
+            const location=input.value;
+            handler(location);
+        });
     }
 }

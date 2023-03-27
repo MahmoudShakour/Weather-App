@@ -1,5 +1,5 @@
 export class dayWeather{
-    constructor(name,temperature,feelsLike,windSpeed,humidity,date,condition,chanceOfRain,windSpeedSpeed){
+    constructor(name,temperature,feelsLike,windSpeed,humidity,date,condition,chanceOfRain){
         this._name=name;
         this._temperature=temperature;
         this._feelsLike=feelsLike;

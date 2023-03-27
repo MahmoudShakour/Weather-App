@@ -5,18 +5,106 @@
 
 html,
 body{
-    height: 800px;
+    height: 100%;
+    /* background-image: url(./assets/bg.jpg); */
+    background-color: #a69e9e;
 }
 
 .root{
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 60px;
 }
 
 .today-weather-container{
     flex: 1;
     display: flex;
     justify-content: space-between;
+}
+
+.today-weather-left-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.today-condition{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.today-name
+{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.today-date{
+    font-size: 20px;
+}
+
+.today-temperature{
+    font-size: 45px;
+    font-weight: 800;
+}
+
+.search-input{
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.search-button{
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 10px;
+    background: none;
+    border: none;
+    background: none;
+}
+
+.search-button:hover{
+    color: blue;
+}
+
+.today-weather-right-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.today-feels-like,
+.today-humidity,
+.today-wind-speed
+{
+    font-size: 20px;
+}
+
+.week-weather-container{
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.week-weather-element-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;  
+}
+
+.week-weather-element-name{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.week-weather-element-maxTemp{
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.week-weather-element-minTemp{
+    font-size: 20px;
 }

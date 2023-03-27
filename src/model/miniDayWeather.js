@@ -1,3 +1,5 @@
+import { getDayByDate } from "../API/getDayByNumber";
+
 export class miniDayWeather{
     constructor(name,minTemperature,maxTemperature){
         this._name=name;
@@ -6,7 +8,7 @@ export class miniDayWeather{
     }
 
     get name() { return this._name; }
-    set name(value) { this._nama=value; }
+    set name(value) { this._name=value; }
 
     get minTemperature() { return this._minTemperature; }
     set minTemperature(value) { this._minTemperature=value; }
@@ -15,7 +17,7 @@ export class miniDayWeather{
     set maxTemperature(value) { this._maxTemperature=value; }
 
     static createMiniDayWeather(obj){
-        let name=obj.date; 
+        let name=getDayByDate(obj.date);
         let minTemp=obj.day.mintemp_c;
         let maxTemp=obj.day.maxtemp_c;
 
