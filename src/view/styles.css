@@ -6,7 +6,6 @@
 html,
 body{
     height: 100%;
-    /* background-image: url(./assets/bg.jpg); */
     background-color: #a69e9e;
 }
 
@@ -55,7 +54,9 @@ body{
     font-size: 20px;
 }
 
-.search-button{
+.search-button,
+.toggle-degree-button
+{
     padding: 5px;
     font-size: 20px;
     border-radius: 10px;
@@ -64,7 +65,9 @@ body{
     background: none;
 }
 
-.search-button:hover{
+.search-button:hover,
+.toggle-degree-button:hover
+{
     color: blue;
 }
 
